@@ -1,0 +1,49 @@
+﻿<Page
+    x:Class="MyCGAndDIPApp2.LinesCutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyCGAndDIPApp2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
+	mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+	Unloaded="Page_Unloaded"
+	>
+	<Page.Resources>
+		<Style x:Key="ButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonRevealStyle}">
+			<Setter Property="CornerRadius" Value="2,2,2,2"/>
+		</Style>
+	</Page.Resources>
+
+	<Grid x:Name="Grid_LinesCutRoot" KeyDown="Grid_LinesCutRoot_KeyDown" 
+		  Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="16,0,0,0">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1*"/>
+			<ColumnDefinition Width="320"/>
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Column="0" BorderBrush="#303030" BorderThickness="2" CornerRadius="4">
+			<canvas:CanvasControl x:Name="canvas" Draw="canvas_Draw"/>
+		</Grid>
+		<Grid Grid.Column="1" Padding="8,8,8,8">
+			<StackPanel Orientation="Vertical"
+						Margin="8,8,8,8">
+				<Button x:Name="Button_DrawLine" Click="Button_DrawLine_Click"
+					Style="{StaticResource ButtonStyle}" Margin="0,8,0,8">
+					<StackPanel Orientation="Horizontal">
+						<FontIcon Glyph="&#xE70F;"/>
+						<TextBlock Text="Draw Line" Margin="8,0,0,0"/>
+					</StackPanel>
+				</Button>
+				<Slider x:Name="Slider_Rectangle" Header="Rectangle Size" Value="50" ValueChanged="Slider_Rectangle_ValueChanged"
+						Minimum="1" Maximum="100" SmallChange="1" LargeChange="10" Margin="0,8,0,8"/>
+				<Button x:Name="Button_CleanAll" Click="Button_CleanAll_Click" Style="{StaticResource ButtonStyle}" Margin="0,8,0,8">
+					<StackPanel Orientation="Horizontal">
+						<FontIcon Glyph="&#xE75C;" FontSize="18"/>
+						<TextBlock Text="Clean All" Margin="8,0,8,0"/>
+					</StackPanel>
+				</Button>
+			</StackPanel>
+		</Grid>
+	</Grid>
+</Page>

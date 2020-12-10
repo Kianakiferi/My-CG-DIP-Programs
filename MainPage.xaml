@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="MyCGAndDIPApp2.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyCGAndDIPApp2"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="using:Windows.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+	<Page.Resources>
+		<Thickness x:Key="NavigationViewHeaderMargin">13,0</Thickness>
+
+	</Page.Resources>
+	
+	<Grid>
+		<TextBlock x:Name="AppTitleText" Text="My CG&amp;DIP App" Style="{StaticResource CaptionTextBlockStyle}"  Margin="12,8,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.ZIndex="100">
+		</TextBlock>
+
+		<muxc:NavigationView Name="MainNavView" Grid.Row="1"
+                        Loaded="MainNavView_Loaded"
+                        ItemInvoked="MainNavView_ItemInvoked"
+                        BackRequested="MainNavView_BackRequested"
+                        SelectionChanged="MainNavView_SelectionChanged"
+                        IsBackEnabled="False"
+                        IsBackButtonVisible="Collapsed"
+                        PaneDisplayMode="Left"
+                        PaneClosing="MainNavView_PaneClosing"
+                        PaneOpening="MainNavView_PaneOpening"
+                        Header="Header"
+                        AlwaysShowHeader="False"
+                        >
+			<muxc:NavigationView.MenuItems>
+				<muxc:NavigationViewItem Content="Home" Icon="Home" Tag="home" />
+
+				<muxc:NavigationViewItem Content="Draw Lines" Tag="lines">
+					<muxc:NavigationViewItem.Icon>
+						<FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE932;"/>
+					</muxc:NavigationViewItem.Icon>
+				</muxc:NavigationViewItem>
+
+				<muxc:NavigationViewItem Content="Lines Cut"  Tag="linescut">
+					<muxc:NavigationViewItem.Icon>
+						<FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE809;"/>
+						<!--<SymbolIcon Symbol="Refresh" />-->
+					</muxc:NavigationViewItem.Icon>
+				</muxc:NavigationViewItem>
+				
+
+			</muxc:NavigationView.MenuItems>
+			<Frame x:Name="ContentFrame" Padding="12,0,12,24" IsTabStop="True"
+                       NavigationFailed="ContentFrame_NavigationFailed"/>
+		</muxc:NavigationView>
+		
+	</Grid>
+</Page>
